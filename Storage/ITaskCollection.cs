@@ -10,6 +10,7 @@ namespace Storage
         void MakeDone(string name);
         void GiveInformarion(string name);
         void ToFile();
+        void FromFile();
         int FindTask(string name);
 
     }

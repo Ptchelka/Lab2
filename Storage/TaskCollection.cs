@@ -2,10 +2,14 @@
 using System.Text.Json;
 using System.IO;
 using System.Text.Json.Serialization;
+using System.Net.Http.Json;
+using System;
+using System.Threading.Tasks;
 namespace Storage
 {
     public class TaskCollection : ITaskCollection
     {
+        private const string TasksJson = "tasks.json";
         private static List<Task> tasks;
         public TaskCollection()
         {
@@ -40,11 +44,19 @@ namespace Storage
         {
             tasks[FindTask(name)].GiveInformarion();
         }
+        public void FromFile()
+        {
+            string jsonString = File.ReadAllText(TasksJson);
+            tasks = JsonSerializer.Deserialize<List<Task>>(jsonString)!;
+
+           // string jsonContent = File.ReadAllText(tasks.);
+           // tasks =
+           //    JsonSerializer.Deserialize<List<Task>>(tasks);
+        }
         public void ToFile()
         {
             string json = JsonSerializer.Serialize(tasks, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText("tasks.json", json);
-            Console.WriteLine("Задачи сохранены в файл tasks.json.");
+            File.WriteAllText(TasksJson, json);
         }
 
     }

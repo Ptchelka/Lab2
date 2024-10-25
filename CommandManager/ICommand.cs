@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace CommandManager
 {
-    internal interface ICommand
+    public interface ICommand
     {
-        void Do(string name, string name2);
+        string Do(string name, string name2);
         bool IsMyTask(string taskName);
         string Name();
     }

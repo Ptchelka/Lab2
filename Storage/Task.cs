@@ -11,7 +11,7 @@
         }
         public void GiveInformarion()
         {
-            Console.WriteLine(name + "\r\n Описание:" +
+            Console.WriteLine("Название:"+name + "\r\n Описание:" +
                                  descript + "\r\n Ответсвенный:" +
                                  responsible + "\r\n Выпонено или нет:" +
                                  state);

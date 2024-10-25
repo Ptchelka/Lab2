@@ -2,7 +2,7 @@
 using System.Xml.Linq;
 namespace CommandManager
 {
-    internal class MakeDone : ICommand
+    public class MakeDone : ICommand
     {
         public ITaskCollection collection;
         public MakeDone(ITaskCollection collection)
@@ -17,15 +17,16 @@ namespace CommandManager
         {
             return ("MakeDone");
         }
-        public void Do(string name, string name2)
+        public string Do(string name, string name2)
         {
             if (!IsMyTask(name))
             {
-                Console.WriteLine("Такой задачи нет");
+                return "Такой задачи нет";
             }
             else
             {
                 collection.MakeDone(name);
+                return "Задача выполнена!";
             }
         }
     }

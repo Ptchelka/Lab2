@@ -1,7 +1,7 @@
 ﻿using Storage;
 namespace CommandManager
 {
-    internal class AddNewTask : ICommand
+    public class AddNewTask : ICommand
     {
         public ITaskCollection collection;
         public AddNewTask(ITaskCollection collection)
@@ -16,15 +16,16 @@ namespace CommandManager
         {
             return ("AddNewTask");
         }
-        public void Do(string name, string deskription)
+        public string Do(string name, string deskription)
         {
             if (IsMyTask(name))
             {
-                Console.WriteLine("Такая задача уже есть");
+                return"Такая задача уже есть";
             }
             else
             {
                 collection.AddNewTask(name, deskription);
+                return "Добавлено";
             }
         }
     }

@@ -1,7 +1,7 @@
 ﻿using Storage;
 namespace CommandManager
 {
-    internal class AddNewResponsable : ICommand
+    public class AddNewResponsable : ICommand
     {
         public ITaskCollection collection;
         public AddNewResponsable(ITaskCollection collection)
@@ -16,15 +16,16 @@ namespace CommandManager
         {
             return ("AddNewResponsable");
         }
-        public void Do(string name, string responsable)
+        public string Do(string name, string responsable)
         {
             if (!IsMyTask(name))
             {
-                Console.WriteLine("Такой задачи нет");
+                return "Такой задачи нет";
             }
             else
             {
                 collection.AddNewResponsable(name, responsable);
+                return "Добавлено";
             }
         }
     }

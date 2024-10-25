@@ -1,7 +1,7 @@
 ﻿using Storage;
 namespace CommandManager
 {
-    internal class GiveInformation : ICommand
+    public class GiveInformation : ICommand
     {
         public ITaskCollection collection;
         public GiveInformation(ITaskCollection collection)
@@ -14,17 +14,18 @@ namespace CommandManager
         }
         public string Name()
         {
-            return ("GiveIbformation");
+            return ("GiveInformation");
         }
-        public void Do(string name, string name2)
+        public string Do(string name, string name2)
         {
             if (!IsMyTask(name))
             {
-                Console.WriteLine("Такой задачи нет");
+                return "Такой задачи нет";
             }
             else
             {
                 collection.GiveInformarion(name);
+                return " ";
             }
         }
     }

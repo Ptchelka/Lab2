@@ -8,31 +8,34 @@ namespace CommandManager
         private ICommand addNewResponsable;
         private ICommand makeDone;
         private ICommand giveInformation;
-        public ITaskCollection collection;
-        public Manager()
+        public ITaskCollection collection { get;  }
+        public Manager(TaskCollection collection, ICommand addNewTask, ICommand addNewResponsable, ICommand makeDone, ICommand giveInformation)
         {
-            
-            collection = new TaskCollection();
-            addNewTask = new AddNewTask(collection);
-            addNewResponsable = new AddNewResponsable(collection);
-            makeDone = new MakeDone(collection);
-            giveInformation = new GiveInformation(collection);
+            this.collection = collection;
+            this.giveInformation = giveInformation;
+            this.makeDone = makeDone;
+            this.addNewResponsable = addNewResponsable;
+            this.addNewTask = addNewTask;
+            //addNewTask = new AddNewTask(collection);
+            //addNewResponsable = new AddNewResponsable(collection);
+            //makeDone = new MakeDone(collection);
+            //giveInformation = new GiveInformation(collection);
         }
-        public void AddNewTask(string name, string deskription)
+        public string AddNewTask(string name, string deskription)
         {
-            addNewTask.Do(name, deskription);
+            return addNewTask.Do(name, deskription);
         }
-        public void AddNewResponsable(string name, string responsable)
+        public string AddNewResponsable(string name, string responsable)
         {
-            addNewResponsable.Do(name, responsable);
+            return addNewResponsable.Do(name, responsable);
         }
-        public void MakeDone(string name)
+        public string MakeDone(string name)
         {
-            makeDone.Do(name, name);
+            return makeDone.Do(name, name);
         }
-        public void GiveInformation(string name)
+        public string GiveInformation(string name)
         {
-            giveInformation.Do(name, name);
+            return giveInformation.Do(name, name);
         }
         public void ToFile()
         {
