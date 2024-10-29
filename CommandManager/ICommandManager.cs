@@ -15,6 +15,7 @@ namespace CommandManager
         string AddNewResponsable(string name, string responsable);
         string MakeDone(string name);
         string GiveInformation(string name);
-        void ToFile();
+        System.Threading.Tasks.Task ToFile();
+        System.Threading.Tasks.Task FromFile();
     }
 }

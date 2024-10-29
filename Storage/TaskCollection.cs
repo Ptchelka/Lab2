@@ -44,20 +44,46 @@ namespace Storage
         {
             tasks[FindTask(name)].GiveInformarion();
         }
+        public string GetResponsible(string name)
+        {
+            return tasks[FindTask(name)].responsible;
+        }
+        public bool GetState(string name)
+        {
+            return tasks[FindTask(name)].state;
+        }
+        public int TaskCount()
+        {
+            return tasks.Count;
+        }
+        /*
         public void FromFile()
         {
             string jsonString = File.ReadAllText(TasksJson);
             tasks = JsonSerializer.Deserialize<List<Task>>(jsonString)!;
-
-           // string jsonContent = File.ReadAllText(tasks.);
-           // tasks =
-           //    JsonSerializer.Deserialize<List<Task>>(tasks);
         }
         public void ToFile()
         {
             string json = JsonSerializer.Serialize(tasks, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(TasksJson, json);
         }
+        */
+        public async System.Threading.Tasks.Task FromFile()
+        {
+            using (StreamReader reader = new StreamReader(TasksJson))
+            {
+                string jsonString = await reader.ReadToEndAsync();
+                tasks = JsonSerializer.Deserialize<List<Task>>(jsonString)!;
+            }
+        }
 
+        public async System.Threading.Tasks.Task ToFile()
+        {
+            string json = JsonSerializer.Serialize(tasks, new JsonSerializerOptions { WriteIndented = true });
+            using (StreamWriter writer = new StreamWriter(TasksJson))
+            {
+                await writer.WriteAsync(json);
+            }
+        }
     }
 }

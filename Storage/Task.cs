@@ -1,6 +1,6 @@
 ﻿namespace Storage
 {
-    internal class Task
+    public class Task
     {
         public Task(String name, String descript)
         {

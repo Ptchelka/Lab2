@@ -16,10 +16,6 @@ namespace CommandManager
             this.makeDone = makeDone;
             this.addNewResponsable = addNewResponsable;
             this.addNewTask = addNewTask;
-            //addNewTask = new AddNewTask(collection);
-            //addNewResponsable = new AddNewResponsable(collection);
-            //makeDone = new MakeDone(collection);
-            //giveInformation = new GiveInformation(collection);
         }
         public string AddNewTask(string name, string deskription)
         {
@@ -37,9 +33,17 @@ namespace CommandManager
         {
             return giveInformation.Do(name, name);
         }
-        public void ToFile()
+        public int TaskCount()
+        {
+            return collection.TaskCount();
+        }
+        public async System.Threading.Tasks.Task ToFile()
         {
             collection.ToFile();
+        }
+        public async System.Threading.Tasks.Task FromFile()
+        {
+            collection.FromFile();
         }
     }
 }

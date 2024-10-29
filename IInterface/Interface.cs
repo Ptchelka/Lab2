@@ -9,9 +9,9 @@ namespace IInterface
         {
             commandmanager = cm;
         }
-        public void Run()
+        public async System.Threading.Tasks.Task Run()
         {
-            commandmanager.collection.FromFile();
+            await commandmanager.FromFile();
             Console.WriteLine("Меню:\r\n1. Добавить новую задачу\r\n" +
                                 "2. Назначить ответственного за задачу\r\n" +
                                 "3. Отметить задачу как выполненную\r\n" +
@@ -20,7 +20,7 @@ namespace IInterface
             bool continues = true;
             while (continues)
             {
-                Console.WriteLine("Выберите действие (1-4)");
+                Console.WriteLine("Выберите действие (1-5)");
                 string a = Console.ReadLine();
                 Console.WriteLine("Введите название задачи");
                 string maasage = Console.ReadLine();
@@ -43,7 +43,7 @@ namespace IInterface
                         Console.WriteLine(commandmanager.GiveInformation(maasage));
                         break;
                     case "5":
-                        commandmanager.ToFile();
+                       await commandmanager.ToFile();
                         continues = false;
                         break;
                     default:

@@ -1,4 +1,6 @@
 ﻿
+using System.Threading.Tasks;
+
 namespace Storage
 {
     public interface ITaskCollection
@@ -9,8 +11,9 @@ namespace Storage
 
         void MakeDone(string name);
         void GiveInformarion(string name);
-        void ToFile();
-        void FromFile();
+        System.Threading.Tasks.Task ToFile();
+        System.Threading.Tasks.Task FromFile();
+        int TaskCount();
         int FindTask(string name);
 
     }
