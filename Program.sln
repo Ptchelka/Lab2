@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Storage", "Storage\Storage.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommandManager", "CommandManager\CommandManager.csproj", "{F7F04154-4973-4E81-A8F2-FF94FAC5C1E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{972EBD4E-460D-4FD6-8C04-2E1B8DAC8A01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StorageTests", "StorageTests\StorageTests.csproj", "{E048264E-BFAB-4C6C-A0DC-22DFE7B2BD40}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{F7F04154-4973-4E81-A8F2-FF94FAC5C1E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7F04154-4973-4E81-A8F2-FF94FAC5C1E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7F04154-4973-4E81-A8F2-FF94FAC5C1E4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{972EBD4E-460D-4FD6-8C04-2E1B8DAC8A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{972EBD4E-460D-4FD6-8C04-2E1B8DAC8A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{972EBD4E-460D-4FD6-8C04-2E1B8DAC8A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{972EBD4E-460D-4FD6-8C04-2E1B8DAC8A01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E048264E-BFAB-4C6C-A0DC-22DFE7B2BD40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E048264E-BFAB-4C6C-A0DC-22DFE7B2BD40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E048264E-BFAB-4C6C-A0DC-22DFE7B2BD40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E048264E-BFAB-4C6C-A0DC-22DFE7B2BD40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,7 +9,7 @@ namespace CommandManager
         private ICommand makeDone;
         private ICommand giveInformation;
         public ITaskCollection collection { get;  }
-        public Manager(TaskCollection collection, ICommand addNewTask, ICommand addNewResponsable, ICommand makeDone, ICommand giveInformation)
+        public Manager(ITaskCollection collection, ICommand addNewTask, ICommand addNewResponsable, ICommand makeDone, ICommand giveInformation)
         {
             this.collection = collection;
             this.giveInformation = giveInformation;

@@ -10,6 +10,7 @@ namespace CommandManager
         }
         public bool IsMyTask(string taskName)
         {
+            //Console.WriteLine(collection.TaskCount() + " " + taskName);
             return (collection.FindTask(taskName) != -1);
         }
         public string Name()
@@ -20,7 +21,7 @@ namespace CommandManager
         {
             if (IsMyTask(name))
             {
-                return"Такая задача уже есть";
+                return "Такая задача уже есть";
             }
             else
             {
