@@ -13,10 +13,26 @@ namespace Storage
     public class DataBase : DbContext, ITaskCollection
     {
         public DbSet<Tassk> tasks { get; set; }
+        private readonly string _connectionString;
+        public DataBase(string connectionString)
+        {
+            _connectionString = connectionString;
+        }
+        public DataBase()
+        {
+            _connectionString = "Data Source=C:\\Users\\ovtch\\Downloads\\sqlite-tools-win-x64-3470000\\tasks.db";
+        }
+        public DataBase(DbContextOptions<DataBase> options) : base(options)
+        {
+            // Здесь можно оставить пустым, так как настройки будут переданы через options
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite("Data Source=C:\\Users\\ovtch\\Downloads\\sqlite-tools-win-x64-3470000\\tasks.db");
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite(_connectionString);
+            }
         }
 
         public async Task InitializeDatabase()
@@ -42,7 +58,7 @@ namespace Storage
         public async Task AddNewResponsable(string name, string responsable)
         {
             
-            using (var db = new SqliteConnection("Data Source=C:\\Users\\ovtch\\Downloads\\sqlite-tools-win-x64-3470000\\tasks.db"))
+            using (var db = new SqliteConnection(_connectionString))
             {
                 await db.OpenAsync();
 
@@ -60,7 +76,7 @@ namespace Storage
 
         public async Task MakeDone(string name)
         {
-            using (var db = new SqliteConnection("Data Source=C:\\Users\\ovtch\\Downloads\\sqlite-tools-win-x64-3470000\\tasks.db"))
+            using (var db = new SqliteConnection(_connectionString))
             {
                 await db.OpenAsync();
 
@@ -76,7 +92,7 @@ namespace Storage
 
         public async Task GiveInformarion(string name)
         {
-            using (var db = new SqliteConnection("Data Source=C:\\Users\\ovtch\\Downloads\\sqlite-tools-win-x64-3470000\\tasks.db"))
+            using (var db = new SqliteConnection(_connectionString))
             {
                 await db.OpenAsync();
 
@@ -104,7 +120,7 @@ namespace Storage
 
         public int FindTask(string name)
         {
-            using (var db = new SqliteConnection("Data Source=C:\\Users\\ovtch\\Downloads\\sqlite-tools-win-x64-3470000\\tasks.db"))
+            using (var db = new SqliteConnection(_connectionString))
             {
                 db.Open();
                 var query = "SELECT Id FROM tasks WHERE Title = @Title";

@@ -1,26 +1,21 @@
-/*using FlashCards_with_DB.Model;
-using FlashCards_with_DB.Model.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Moq;
-using NUnit.Framework;
-using NUnit.Framework.Legacy;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Xunit;
+using Microsoft.EntityFrameworkCore;
+using Storage;
 
 
 namespace StorageTests
 {
     public class DataBaseTests
     {
-        private FlashCardContext _context;
-        private Mock<Storage> _storage;
         private DbContextOptions<DataBase> CreateNewContextOptions()
         {
             // —оздаЄм новый экземпл€р контекста базы данных с использованием InMemoryDatabase
-            return new DbContextOptionsBuilder<DataBase>()
-                .UseInMemoryDatabase("TestDatabase")
-                .Options;
+            return new DbContextOptionsBuilder<DataBase>().UseInMemoryDatabase("TestDatabase").Options;
         }
 
         [Fact]
@@ -45,8 +40,8 @@ namespace StorageTests
                 // Assert
                 Assert.Equal(1, await context.tasks.CountAsync());
                 var task = await context.tasks.FirstAsync();
-                Assert.Equal("Test Task", task.Name);
-                Assert.Equal("This is a test task.", task.Description);
+                Assert.Equal("Test Task", task.title);
+                Assert.Equal("This is a test task.", task.description);
             }
         }
 
@@ -72,7 +67,7 @@ namespace StorageTests
             {
                 // Assert
                 var task = await context.tasks.FirstAsync();
-                Assert.True(task.IsCompleted);
+                Assert.True(task.iscompleted);
             }
         }
 
@@ -98,7 +93,7 @@ namespace StorageTests
             {
                 // Assert
                 var task = await context.tasks.FirstAsync();
-                Assert.Equal("John Doe", task.Responsible);
+                Assert.Equal("John Doe", task.responsible);
             }
         }
 
@@ -125,4 +120,4 @@ namespace StorageTests
             }
         }
     }
-}*/
+}
